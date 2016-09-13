@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol InAppNotificationsDelegate {
     func notificationDidShow(_ notification: InAppNotification)
@@ -91,9 +92,13 @@ class InAppNotifications: NotificationViewControllerDelegate {
         if status, let URL = controller.notification.callToActionURL {
             controller.hide(animated: true) {
                 Logger.info(message: "opening CTA URL: \(URL)")
+                #if !MIXPANEL_APP_EXTENSION
                 if !UIApplication.shared.openURL(URL) {
-                    Logger.error(message: "Mixpanel failed to open given URL: \(URL)")
+                    Logger.error(message: "Mixpanel failed to open given URL: \(URL)")    
                 }
+                #else
+                    Logger.error(message: "Mixpanel failed to open given URL: \(URL)")
+                #endif
 
                 self.delegate?.notificationDidCTA(controller.notification, event: "$campaign_open")
                 completionBlock()

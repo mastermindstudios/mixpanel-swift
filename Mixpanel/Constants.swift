@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreGraphics
+import UIKit
 
 struct QueueConstants {
     static var queueSize = 5000

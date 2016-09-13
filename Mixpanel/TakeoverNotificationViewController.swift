@@ -25,7 +25,7 @@ class TakeoverNotificationViewController: BaseNotificationViewController {
 
     static func notificationXibToLoad() -> String {
         var xibName = String(describing: TakeoverNotificationViewController.self)
-
+        #if !MIXPANEL_APP_EXTENSION
         if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone {
             let isLandscape = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)
             if isLandscape {
@@ -36,7 +36,7 @@ class TakeoverNotificationViewController: BaseNotificationViewController {
         } else {
             xibName += "~ipad"
         }
-
+        #endif
         return xibName
     }
 

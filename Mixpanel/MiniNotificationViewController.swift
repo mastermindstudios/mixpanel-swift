@@ -44,6 +44,7 @@ class MiniNotificationViewController: BaseNotificationViewController {
     }
 
     override func show(animated: Bool) {
+        #if !MIXPANEL_APP_EXTENSION
         canPan = false
         let frame: CGRect
         if UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation)
@@ -78,6 +79,7 @@ class MiniNotificationViewController: BaseNotificationViewController {
             }, completion: { _ in
                 self.position = self.window?.layer.position
         })
+        #endif
     }
 
     override func hide(animated: Bool, completion: @escaping () -> Void) {
@@ -103,6 +105,7 @@ class MiniNotificationViewController: BaseNotificationViewController {
     }
 
     func didPan(gesture: UIPanGestureRecognizer) {
+        #if !MIXPANEL_APP_EXTENSION
         if canPan, let window = window {
             switch gesture.state {
             case UIGestureRecognizerState.began:
@@ -124,9 +127,11 @@ class MiniNotificationViewController: BaseNotificationViewController {
                 break
             }
         }
+        #endif
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        #if !MIXPANEL_APP_EXTENSION
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: { (ctx) in
             let frame: CGRect
@@ -148,5 +153,6 @@ class MiniNotificationViewController: BaseNotificationViewController {
             self.window?.frame = frame
 
             }, completion: nil)
+        #endif
     }
 }

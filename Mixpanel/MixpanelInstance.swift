@@ -255,6 +255,7 @@ open class MixpanelInstance: CustomDebugStringConvertible, FlushDelegate {
     }
 
     @objc private func applicationDidEnterBackground(_ notification: Notification) {
+        #if !MIXPANEL_APP_EXTENSION
         let sharedApplication = UIApplication.shared
 
         taskId = sharedApplication.beginBackgroundTask() {
@@ -274,9 +275,11 @@ open class MixpanelInstance: CustomDebugStringConvertible, FlushDelegate {
                 self.taskId = UIBackgroundTaskInvalid
             }
         }
+        #endif
     }
 
     @objc private func applicationWillEnterForeground(_ notification: Notification) {
+        #if !MIXPANEL_APP_EXTENSION
         serialQueue.async() {
             if self.taskId != UIBackgroundTaskInvalid {
                 UIApplication.shared.endBackgroundTask(self.taskId)
@@ -286,7 +289,9 @@ open class MixpanelInstance: CustomDebugStringConvertible, FlushDelegate {
                 #endif
             }
         }
+        #endif
     }
+    
 
     @objc private func applicationWillTerminate(_ notification: Notification) {
         serialQueue.async() {
@@ -323,7 +328,9 @@ open class MixpanelInstance: CustomDebugStringConvertible, FlushDelegate {
     #if os(iOS)
     func updateNetworkActivityIndicator(_ on: Bool) {
         if showNetworkActivityIndicator {
+            #if !MIXPANEL_APP_EXTENSION
             UIApplication.shared.isNetworkActivityIndicatorVisible = on
+            #endif
         }
     }
 
