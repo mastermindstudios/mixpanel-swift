@@ -46,7 +46,7 @@ class TakeoverNotificationViewController: BaseNotificationViewController {
         if let notificationImage = notification.image, let image = UIImage(data: notificationImage, scale: 2) {
             imageView.image = image
         } else {
-            Logger.error(message: "notification image failed to load from data")
+            MixpanelLogger.error(message: "notification image failed to load from data")
         }
 
         titleLabel.text = notification.title

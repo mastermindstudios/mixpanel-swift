@@ -16,7 +16,7 @@ class JSONHandler {
         let data: Data? = serializeJSONObject(obj)
 
         guard let d = data else {
-            Logger.warn(message: "couldn't serialize object")
+            MixpanelLogger.warn(message: "couldn't serialize object")
             return nil
         }
 
@@ -24,7 +24,7 @@ class JSONHandler {
 
         guard let b64 = base64Encoded
             .addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else {
-            Logger.warn(message: "couldn't replace characters to allowed URL character set")
+            MixpanelLogger.warn(message: "couldn't replace characters to allowed URL character set")
             return nil
         }
 
@@ -35,7 +35,7 @@ class JSONHandler {
         let serializableJSONObject = makeObjectSerializable(obj)
 
         guard JSONSerialization.isValidJSONObject(serializableJSONObject) else {
-            Logger.warn(message: "object isn't valid and can't be serialzed to JSON")
+            MixpanelLogger.warn(message: "object isn't valid and can't be serialzed to JSON")
             return nil
         }
         var serializedObject: Data? = nil
@@ -43,7 +43,7 @@ class JSONHandler {
             serializedObject = try JSONSerialization
                 .data(withJSONObject: serializableJSONObject, options: [])
         } catch {
-            Logger.warn(message: "exception encoding api data")
+            MixpanelLogger.warn(message: "exception encoding api data")
         }
         return serializedObject
     }
@@ -74,7 +74,7 @@ class JSONHandler {
             return obj.absoluteString
 
         default:
-            Logger.info(message: "enforcing string on object")
+            MixpanelLogger.info(message: "enforcing string on object")
             return String(describing: obj)
         }
     }

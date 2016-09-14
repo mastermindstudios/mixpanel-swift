@@ -108,19 +108,19 @@ open class MixpanelInstance: CustomDebugStringConvertible, FlushDelegate {
     open var loggingEnabled: Bool = false {
         didSet {
             if loggingEnabled {
-                Logger.enableLevel(.Debug)
-                Logger.enableLevel(.Info)
-                Logger.enableLevel(.Warning)
-                Logger.enableLevel(.Error)
+                MixpanelLogger.enableLevel(.Debug)
+                MixpanelLogger.enableLevel(.Info)
+                MixpanelLogger.enableLevel(.Warning)
+                MixpanelLogger.enableLevel(.Error)
 
-                Logger.info(message: "Logging Enabled")
+                MixpanelLogger.info(message: "Logging Enabled")
             } else {
-                Logger.info(message: "Logging Disabled")
+                MixpanelLogger.info(message: "Logging Disabled")
 
-                Logger.disableLevel(.Debug)
-                Logger.disableLevel(.Info)
-                Logger.disableLevel(.Warning)
-                Logger.disableLevel(.Error)
+                MixpanelLogger.disableLevel(.Debug)
+                MixpanelLogger.disableLevel(.Info)
+                MixpanelLogger.disableLevel(.Warning)
+                MixpanelLogger.disableLevel(.Error)
             }
         }
     }
@@ -372,7 +372,7 @@ extension MixpanelInstance {
      */
     open func identify(distinctId: String) {
         if distinctId.isEmpty {
-            Logger.error(message: "\(self) cannot identify blank distinct id")
+            MixpanelLogger.error(message: "\(self) cannot identify blank distinct id")
             return
         }
 
@@ -414,12 +414,12 @@ extension MixpanelInstance {
      */
     open func createAlias(_ alias: String, distinctId: String) {
         if distinctId.isEmpty {
-            Logger.error(message: "\(self) cannot identify blank distinct id")
+            MixpanelLogger.error(message: "\(self) cannot identify blank distinct id")
             return
         }
 
         if alias.isEmpty {
-            Logger.error(message: "\(self) create alias called with empty alias")
+            MixpanelLogger.error(message: "\(self) create alias called with empty alias")
             return
         }
 
@@ -597,7 +597,7 @@ extension MixpanelInstance {
                 track(event: event,
                       properties: properties)
             } else {
-                Logger.info(message: "malformed mixpanel push payload")
+                MixpanelLogger.info(message: "malformed mixpanel push payload")
             }
         }
     }
@@ -729,7 +729,7 @@ extension MixpanelInstance: InAppNotificationsDelegate {
 
     func checkDecide(forceFetch: Bool = false, completion: @escaping ((_ response: DecideResponse?) -> Void)) {
         guard let distinctId = people.distinctId else {
-            Logger.info(message: "Can't fetch from Decide without identifying first")
+            MixpanelLogger.info(message: "Can't fetch from Decide without identifying first")
             return
         }
         serialQueue.async {

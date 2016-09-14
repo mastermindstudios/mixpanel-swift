@@ -1,5 +1,5 @@
 //
-//  Logger.swift
+//  MixpanelLogger.swift
 //  Logger
 //
 //  Created by Sam Green on 7/8/16.
@@ -56,7 +56,7 @@ protocol Logging {
     func addMessage(message: LogMessage)
 }
 
-class Logger {
+class MixpanelLogger {
     private static var loggers = [Logging]()
     private static var enabledLevels = Set<LogLevel>()
 

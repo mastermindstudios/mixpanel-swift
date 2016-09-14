@@ -20,7 +20,7 @@ struct InAppNotification {
             do {
                 data = try Data(contentsOf: self.imageURL, options: [.mappedIfSafe])
             } catch {
-                Logger.error(message: "image failed to load from url \(self.imageURL)")
+                MixpanelLogger.error(message: "image failed to load from url \(self.imageURL)")
             }
             return data
         }
@@ -42,7 +42,7 @@ extension String {
                                                                       length: self.characters.count),
                                                        withTemplate: "\(suffix)$1")
         } catch {
-            Logger.error(message: "cannot add suffix to URL string")
+            MixpanelLogger.error(message: "cannot add suffix to URL string")
         }
         return newString
     }
@@ -51,42 +51,42 @@ extension String {
 extension InAppNotification {
     init?(JSONObject: [String: Any]?) {
         guard let object = JSONObject else {
-            Logger.error(message: "notification json object should not be nil")
+            MixpanelLogger.error(message: "notification json object should not be nil")
             return nil
         }
 
         guard let ID = object["id"] as? Int, ID > 0 else {
-            Logger.error(message: "invalid notification id")
+            MixpanelLogger.error(message: "invalid notification id")
             return nil
         }
 
         guard let messageID = object["message_id"] as? Int, messageID > 0 else {
-            Logger.error(message: "invalid notification message id")
+            MixpanelLogger.error(message: "invalid notification message id")
             return nil
         }
 
         guard let type = object["type"] as? String else { // todo check if its right types
-            Logger.error(message: "invalid notification type")
+            MixpanelLogger.error(message: "invalid notification type")
             return nil
         }
 
         guard let style = object["style"] as? String else {
-            Logger.error(message: "invalid notification style")
+            MixpanelLogger.error(message: "invalid notification style")
             return nil
         }
 
         guard let title = object["title"] as? String, !title.isEmpty else {
-            Logger.error(message: "invalid notification title")
+            MixpanelLogger.error(message: "invalid notification title")
             return nil
         }
 
         guard let body = object["body"] as? String, !body.isEmpty else {
-            Logger.error(message: "invalid notification body")
+            MixpanelLogger.error(message: "invalid notification body")
             return nil
         }
 
         guard let callToAction = object["cta"] as? String else {
-            Logger.error(message: "invalid notification cta")
+            MixpanelLogger.error(message: "invalid notification cta")
             return nil
         }
 
@@ -99,7 +99,7 @@ extension InAppNotification {
             let escapedImageURLString = imageURLString
                 .addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed),
             var imageURLComponents = URLComponents(string: escapedImageURLString) else {
-            Logger.error(message: "invalid notification image url")
+            MixpanelLogger.error(message: "invalid notification image url")
             return nil
         }
 
@@ -108,7 +108,7 @@ extension InAppNotification {
         }
 
         guard let imageURLParsed = imageURLComponents.url else {
-            Logger.error(message: "invalid notification image url")
+            MixpanelLogger.error(message: "invalid notification image url")
             return nil
         }
 

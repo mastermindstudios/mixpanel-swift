@@ -52,7 +52,7 @@ class Decide {
                         }
                     }
                 } else {
-                    Logger.error(message: "in-app notifications check response format error")
+                    MixpanelLogger.error(message: "in-app notifications check response format error")
                 }
 
                 self.notificationsInstance.inAppNotifications = parsedNotifications
@@ -61,14 +61,14 @@ class Decide {
             _ = semaphore.wait(timeout: DispatchTime.distantFuture)
 
         } else {
-            Logger.info(message: "decide cache found, skipping network request")
+            MixpanelLogger.info(message: "decide cache found, skipping network request")
         }
 
         decideResponse.unshownInAppNotifications = notificationsInstance.inAppNotifications.filter {
             !notificationsInstance.shownNotifications.contains($0.ID)
         }
 
-        Logger.info(message: "decide check found \(decideResponse.unshownInAppNotifications.count) " +
+        MixpanelLogger.info(message: "decide check found \(decideResponse.unshownInAppNotifications.count) " +
             "available notifications out of " +
             "\(notificationsInstance.inAppNotifications.count) total")
 

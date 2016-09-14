@@ -34,7 +34,7 @@ class InAppNotifications: NotificationViewControllerDelegate {
         if notification.image != nil {
             DispatchQueue.main.async {
                 if self.currentlyShowingNotification != nil {
-                    Logger.warn(message: "already showing an in-app notification")
+                    MixpanelLogger.warn(message: "already showing an in-app notification")
                 } else {
                     var shownNotification = false
                     if notification.type == InAppType.Mini.rawValue {
@@ -55,7 +55,7 @@ class InAppNotifications: NotificationViewControllerDelegate {
     }
 
     func markNotificationShown(notification: InAppNotification) {
-        Logger.info(message: "marking notification as seen: \(notification.ID)")
+        MixpanelLogger.info(message: "marking notification as seen: \(notification.ID)")
 
         currentlyShowingNotification = notification
         shownNotifications.insert(notification.ID)
@@ -91,13 +91,13 @@ class InAppNotifications: NotificationViewControllerDelegate {
 
         if status, let URL = controller.notification.callToActionURL {
             controller.hide(animated: true) {
-                Logger.info(message: "opening CTA URL: \(URL)")
+                MixpanelLogger.info(message: "opening CTA URL: \(URL)")
                 #if !MIXPANEL_APP_EXTENSION
                 if !UIApplication.shared.openURL(URL) {
-                    Logger.error(message: "Mixpanel failed to open given URL: \(URL)")    
+                    MixpanelLogger.error(message: "Mixpanel failed to open given URL: \(URL)")    
                 }
                 #else
-                    Logger.error(message: "Mixpanel failed to open given URL: \(URL)")
+                    MixpanelLogger.error(message: "Mixpanel failed to open given URL: \(URL)")
                 #endif
 
                 self.delegate?.notificationDidCTA(controller.notification, event: "$campaign_open")

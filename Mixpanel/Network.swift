@@ -136,11 +136,11 @@ class Network {
             Network.apiRequest(base: BasePath.MixpanelAPI,
                                resource: resource,
                                failure: { (reason, data, response) in
-                                Logger.debug(message: "failed to track integration")
+                                MixpanelLogger.debug(message: "failed to track integration")
                                 completion(false)
                 },
                                success: { (result, response) in
-                                Logger.debug(message: "integration tracked")
+                                MixpanelLogger.debug(message: "integration tracked")
                                 completion(true)
                 }
             )

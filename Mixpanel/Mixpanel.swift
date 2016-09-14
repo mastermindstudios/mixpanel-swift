@@ -97,7 +97,7 @@ class MixpanelManager {
 
     init() {
         instances = [String: MixpanelInstance]()
-        Logger.addLogging(PrintLogging())
+        MixpanelLogger.addLogging(PrintLogging())
     }
 
     func initialize(token apiToken: String,
@@ -115,7 +115,7 @@ class MixpanelManager {
 
     func getInstance(name instanceName: String) -> MixpanelInstance? {
         guard let instance = instances[instanceName] else {
-            Logger.warn(message: "no such instance: \(instanceName)")
+            MixpanelLogger.warn(message: "no such instance: \(instanceName)")
             return nil
         }
         return instance

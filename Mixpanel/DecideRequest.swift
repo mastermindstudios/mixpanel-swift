@@ -47,7 +47,7 @@ class DecideRequest: Network {
             do {
                 response = try JSONSerialization.jsonObject(with: data, options: [])
             } catch {
-                Logger.warn(message: "exception decoding api data")
+                MixpanelLogger.warn(message: "exception decoding api data")
             }
             return response as? DecideResult
         }
@@ -71,7 +71,7 @@ class DecideRequest: Network {
                                       completion: @escaping (DecideResult?) -> Void) {
         Network.apiRequest(base: base, resource: resource,
             failure: { (reason, data, response) in
-                Logger.warn(message: "API request to \(resource.path) has failed with reason \(reason)")
+                MixpanelLogger.warn(message: "API request to \(resource.path) has failed with reason \(reason)")
                 completion(nil)
             }, success: { (result, response) in
                 completion(result)
