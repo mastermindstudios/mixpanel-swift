@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51DD567C1D306B740045D3DB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56791D306B740045D3DB /* Logger.swift */; };
+		51DD567C1D306B740045D3DB /* MixpanelLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56791D306B740045D3DB /* MixpanelLogger.swift */; };
 		51DD56831D306B7B0045D3DB /* PrintLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56801D306B7B0045D3DB /* PrintLogging.swift */; };
 		51DD56841D306B7B0045D3DB /* FileLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56811D306B7B0045D3DB /* FileLogging.swift */; };
 		B8EBD85C1D8797D70070E679 /* PrintLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56801D306B7B0045D3DB /* PrintLogging.swift */; };
@@ -21,7 +21,7 @@
 		B8EBD8641D8797D70070E679 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11594A01D01C597007F8B4F /* Track.swift */; };
 		B8EBD8651D8797D70070E679 /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11594981D01689F007F8B4F /* JSONHandler.swift */; };
 		B8EBD8661D8797D70070E679 /* AutomaticProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D335CF1D3059A800E68E12 /* AutomaticProperties.swift */; };
-		B8EBD8671D8797D70070E679 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56791D306B740045D3DB /* Logger.swift */; };
+		B8EBD8671D8797D70070E679 /* MixpanelLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56791D306B740045D3DB /* MixpanelLogger.swift */; };
 		B8EBD8681D8797D70070E679 /* MixpanelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165228E1D6781DF000D5949 /* MixpanelType.swift */; };
 		B8EBD8691D8797D70070E679 /* InAppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19312661D5A7848007CE1E9 /* InAppNotification.swift */; };
 		B8EBD86A1D8797D70070E679 /* InAppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189D8FC1D5A6985007F3F29 /* InAppNotifications.swift */; };
@@ -53,7 +53,7 @@
 		E11619DB1D5D52F900610404 /* BaseNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11619DA1D5D52F900610404 /* BaseNotificationViewController.swift */; };
 		E12782BB1D4AB5CB0025FB05 /* PrintLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56801D306B7B0045D3DB /* PrintLogging.swift */; };
 		E12782BC1D4AB5CB0025FB05 /* FileLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56811D306B7B0045D3DB /* FileLogging.swift */; };
-		E12782BD1D4AB5CB0025FB05 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56791D306B740045D3DB /* Logger.swift */; };
+		E12782BD1D4AB5CB0025FB05 /* MixpanelLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56791D306B740045D3DB /* MixpanelLogger.swift */; };
 		E12782BE1D4AB5CB0025FB05 /* Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115948A1CFF1538007F8B4F /* Mixpanel.swift */; };
 		E12782BF1D4AB5CB0025FB05 /* MixpanelInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115948D1D000709007F8B4F /* MixpanelInstance.swift */; };
 		E12782C01D4AB5CB0025FB05 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11594921D0036E1007F8B4F /* Persistence.swift */; };
@@ -90,7 +90,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		51DD56791D306B740045D3DB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		51DD56791D306B740045D3DB /* MixpanelLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelLogger.swift; sourceTree = "<group>"; };
 		51DD56801D306B7B0045D3DB /* PrintLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintLogging.swift; sourceTree = "<group>"; };
 		51DD56811D306B7B0045D3DB /* FileLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileLogging.swift; sourceTree = "<group>"; };
 		B8EBD8831D8797D70070E679 /* Mixpanel_AppExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mixpanel_AppExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				51DD56781D306B6B0045D3DB /* Logging */,
-				51DD56791D306B740045D3DB /* Logger.swift */,
+				51DD56791D306B740045D3DB /* MixpanelLogger.swift */,
 			);
 			name = Log;
 			sourceTree = "<group>";
@@ -507,7 +507,7 @@
 				B8EBD8641D8797D70070E679 /* Track.swift in Sources */,
 				B8EBD8651D8797D70070E679 /* JSONHandler.swift in Sources */,
 				B8EBD8661D8797D70070E679 /* AutomaticProperties.swift in Sources */,
-				B8EBD8671D8797D70070E679 /* Logger.swift in Sources */,
+				B8EBD8671D8797D70070E679 /* MixpanelLogger.swift in Sources */,
 				B8EBD8681D8797D70070E679 /* MixpanelType.swift in Sources */,
 				B8EBD8691D8797D70070E679 /* InAppNotification.swift in Sources */,
 				B8EBD86A1D8797D70070E679 /* InAppNotifications.swift in Sources */,
@@ -537,7 +537,7 @@
 				E11594A11D01C597007F8B4F /* Track.swift in Sources */,
 				E11594991D01689F007F8B4F /* JSONHandler.swift in Sources */,
 				E1D335D01D3059A800E68E12 /* AutomaticProperties.swift in Sources */,
-				51DD567C1D306B740045D3DB /* Logger.swift in Sources */,
+				51DD567C1D306B740045D3DB /* MixpanelLogger.swift in Sources */,
 				E165228F1D6781DF000D5949 /* MixpanelType.swift in Sources */,
 				E19312671D5A7848007CE1E9 /* InAppNotification.swift in Sources */,
 				E189D8FD1D5A6985007F3F29 /* InAppNotifications.swift in Sources */,
@@ -558,7 +558,7 @@
 			files = (
 				E12782BB1D4AB5CB0025FB05 /* PrintLogging.swift in Sources */,
 				E12782BC1D4AB5CB0025FB05 /* FileLogging.swift in Sources */,
-				E12782BD1D4AB5CB0025FB05 /* Logger.swift in Sources */,
+				E12782BD1D4AB5CB0025FB05 /* MixpanelLogger.swift in Sources */,
 				E12782BE1D4AB5CB0025FB05 /* Mixpanel.swift in Sources */,
 				E12782BF1D4AB5CB0025FB05 /* MixpanelInstance.swift in Sources */,
 				E12782C01D4AB5CB0025FB05 /* Persistence.swift in Sources */,
